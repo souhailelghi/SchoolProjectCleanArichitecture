@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using SchoolProject.Infrastructure.Abstracts;
 using SchoolProject.Infrastructure.Data;
+using SchoolProject.Infrastructure.Repositories;
+using SchoolProject.Infrastructure;
+using SchoolProject.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +19,14 @@ builder.Services.AddDbContext<ApplecationDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+//Dependency Injection with use AddTransient
+//builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+#region Dependency Injection with use AddTransient
+
+builder.Services.AddInfrastructureDependencies()
+                    .AddServiceDependencies();
+#endregion
 
 
 var app = builder.Build();
