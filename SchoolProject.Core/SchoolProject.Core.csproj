@@ -13,10 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Students\Handlers\" />
-    <Folder Include="Features\Students\Models\" />
-    <Folder Include="Features\Students\Validations\" />
+    <Folder Include="Features\Students\Commands\Handlers\" />
+    <Folder Include="Features\Students\Commands\Validatiors\" />
     <Folder Include="Mapping\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.3.0" />
   </ItemGroup>
 
 </Project>

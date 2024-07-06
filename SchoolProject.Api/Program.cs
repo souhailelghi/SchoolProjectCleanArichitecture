@@ -4,6 +4,7 @@ using SchoolProject.Infrastructure.Data;
 using SchoolProject.Infrastructure.Repositories;
 using SchoolProject.Infrastructure;
 using SchoolProject.Service;
+using SchoolProject.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +26,8 @@ builder.Services.AddDbContext<ApplecationDBContext>(options =>
 #region Dependency Injection with use AddTransient
 
 builder.Services.AddInfrastructureDependencies()
-                    .AddServiceDependencies();
+                    .AddServiceDependencies()
+                    .AddCoreDependencies();
 #endregion
 
 
