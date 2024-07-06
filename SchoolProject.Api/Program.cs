@@ -30,6 +30,20 @@ builder.Services.AddInfrastructureDependencies()
                     .AddCoreDependencies();
 #endregion
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
+
+
 
 var app = builder.Build();
 
@@ -41,6 +55,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Use the CORS policy
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
